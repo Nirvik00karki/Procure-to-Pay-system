@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .sidebar {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #f8f9fa;
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2 class="text-center">Dashboard</h2>
+      <hr />
+      <ul class="nav flex-column">
+        {% if user.is_authenticated %}
+          {% if user.role == 'supplier' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'supplier_dashboard' %}">Profile</a>
+            </li>
+          {% elif user.role == 'user' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Profile</a>
+            </li>
+          {% elif user.role == 'admin' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'pending_requisitions' %}">Profile</a>
+            </li>
+          {% endif %}                     
+        {% endif %}       
+        <li class="nav-item">
+          <a class="nav-link" href="/invoices/">Invoices</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/requisitions/">Requisitions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/purchase_orders/">Purchase Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/suppliers/">Suppliers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/grn_list/">GRN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout/">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

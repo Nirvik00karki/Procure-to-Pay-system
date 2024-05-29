@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}P2P System{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/list.css' %}" />
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            {% include 'sidebar.html' %}
+        </div>
+        <div class="col-md-9">
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

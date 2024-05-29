@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Order Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div>{% include 'navbar.html' %}</div>
+    
+    <div class="container mt-4">
+        <h1>Purchase Order Detail</h1>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text"><strong>Supplier:</strong> {{ purchase_order.supplier.name }}</p>
+                <p class="card-text"><strong>Item:</strong> {{ purchase_order.item }}</p>
+                <p class="card-text"><strong>Status:</strong> {{ purchase_order.status }}</p>
+                <p class="card-text"><strong>Shipping Address:</strong> {{ purchase_order.shipping_address }}</p>
+                <p class="card-text"><strong>Payment Terms:</strong> {{ purchase_order.payment_terms }}</p>
+                <p class="card-text"><strong>Payment Method:</strong> {{ purchase_order.payment_method }}</p>
+                <p class="card-text"><strong>Payment Due Date:</strong> {{ purchase_order.payment_due_date }}</p>
+                <p class="card-text"><strong>Billing Address:</strong> {{ purchase_order.billing_address }}</p>
+                <div class="btn-group" role="group" aria-label="Purchase Order Actions">
+                    <a href="{% url 'edit_purchase_order' purchase_order.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_purchase_order' purchase_order.pk %}" class="btn btn-danger">Delete</a>
+                    {% if user.is_authenticated %}
+                        {% if user.role %}
+                            {% if user.role == 'supplier' %}
+                                <a href="{% url 'purchase_list_s' %}" class="btn btn-secondary">Back</a>
+                            {% else %}
+                                <a href="{% url 'purchase_order_list' %}" class="btn btn-secondary">Back</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    <a href="{% url 'create_grn' purchase_order_id=purchase_order.id %}" class="btn btn-primary">Create GRN</a>
+                    <a href="{% url 'generate_purchase_pdf' purchase_order_id=purchase_order.id %}" class="btn btn-danger">Generate PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

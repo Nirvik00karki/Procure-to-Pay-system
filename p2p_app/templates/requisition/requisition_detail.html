@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Requisition Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div>{% include 'navbar.html' %}</div>
+    <div class="container mt-4">
+        <h1>Requisition Detail</h1>
+        <div class="card">
+            <div class="card-body">
+                <!-- <p class="card-text"><strong>Created By:</strong> {{ requisition.created_by }}</p> -->
+                <p class="card-text"><strong>Description:</strong> {{ requisition.description }}</p>
+                <p class="card-text"><strong>Status:</strong> {{ requisition.status }}</p>
+                <p class="card-text"><strong>Department:</strong> {{ requisition.department }}</p>
+                <p class="card-text"><strong>Urgency:</strong> {{ requisition.urgency }}</p>
+                <p class="card-text"><strong>Issued Date:</strong> {{ requisition.issued_date }}</p>
+                <div class="btn-group" role="group" aria-label="Requisition Actions">
+                    <a href="{% url 'edit_requisition' requisition.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_requisition' requisition.pk %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'requisition_list' %}" class="btn btn-secondary">Back</a>
+                    <a href="{% url 'generate_requisition_pdf' requisition.id %}" class="btn btn-primary">Download as PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

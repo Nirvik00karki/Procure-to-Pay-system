@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRN Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div>{% include 'navbar.html' %}</div>
+    <div class="container mt-4">
+        <h1>GRN Detail</h1>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text"><strong>Purchase Order:</strong> {{ grn.purchase_order }}</p>
+                <p class="card-text"><strong>Received Date:</strong> {{ grn.received_date }}</p>
+                <!-- <p class="card-text"><strong>Received By:</strong> {{ grn.received_by }}</p> -->
+                <p class="card-text"><strong>Remarks:</strong> {{ grn.remarks }}</p>
+                <div class="btn-group" role="group" aria-label="GRN Actions">
+                    {% if user.is_authenticated %}
+                        {% if user.role %}
+                            {% if user.role == 'supplier' %}
+                                <a href="{% url 'grn_list_s' %}" class="btn btn-secondary">Back</a>
+                            {% else %}
+                                <a href="{% url 'grn_list' %}" class="btn btn-secondary">Back</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}   
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

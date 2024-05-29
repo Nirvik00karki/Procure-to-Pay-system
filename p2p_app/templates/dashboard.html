@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .profile {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>{% include 'navbar.html' %}</div>
+    <div>{% include 'sidebar.html' %}</div>
+    <div class="content">
+        <div id="profile" class="profile">
+            <h2>User Profile</h2>
+            <p>Name: {{ request.user.first_name }}</p>
+            <p>Email: {{ request.user.email }}</p>
+            <p>Role: User</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div>{% include 'navbar.html' %}</div>
+    <div class="container mt-4">
+        <h1>Invoice Detail</h1>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text"><strong>Purchase Order:</strong> {{ invoice.purchase_order }}</p>
+                <p class="card-text"><strong>Amount:</strong> {{ invoice.amount }}</p>
+                <p class="card-text"><strong>Status:</strong> {{ invoice.status }}</p>
+                <p class="card-text"><strong>Payment Method:</strong> {{ invoice.payment_method }}</p>
+                <p class="card-text"><strong>Payment Due Date:</strong> {{ invoice.payment_due_date }}</p>
+                <p class="card-text"><strong>Billing Address:</strong> {{ invoice.billing_address }}</p>
+                <p class="card-text"><strong>Invoice Date:</strong> {{ invoice.invoice_date }}</p>
+                <div class="btn-group" role="group" aria-label="Invoice Actions">
+                    <a href="{% url 'edit_invoice' invoice.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_invoice' invoice.pk %}" class="btn btn-danger">Delete</a>
+                    {% if user.is_authenticated %}
+                        {% if user.role %}
+                            {% if user.role == 'supplier' %}
+                                <a href="{% url 'invoice_list_s' %}" class="btn btn-secondary">Back</a>
+                            {% else %}
+                                <a href="{% url 'invoice_list' %}" class="btn btn-secondary">Back</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}              
+                    <a href="{% url 'generate_invoice_pdf' invoice.id %}" class="btn btn-primary">Download as PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}Purchase Order List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="navbar">{% include 'navbar.html' %}</div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <h1>Purchase Order List</h1>
+            <form method="GET">
+                <div class="form-group">
+                    <label for="search_criteria">Search by:</label>
+                    <select name="search_criteria" class="form-control" id="search_criteria">
+                        <option value="item_name" name="item_name">Item Name</option>
+                        <option value="supplier_name" name="supplier_name">Supplier Name</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="search_keyword">Keyword:</label>
+                    <input type="text" name="search_keyword" class="form-control" id="search_keyword">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <ul class="list-group">
+                {% for purchase_order in purchase_orders %}
+                    <li class="list-group-item">
+                        <a href="{% url 'purchase_order_detail' purchase_order.pk %}" class="text-dark">PO#{{ purchase_order.id }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'add_purchase_order' %}" class="btn btn-primary mt-3">Add Purchase Order</a>
+            <a href="{% url 'purchase_order_summary' %}" class="btn btn-primary mt-3">Summary</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

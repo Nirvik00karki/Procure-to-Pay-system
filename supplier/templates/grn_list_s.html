@@ -1,0 +1,19 @@
+{% extends 'supplier_layout.html' %}
+
+{% block title %}Goods Received Note List{% endblock %}
+
+{% block content %}
+    <div class="navbar">{% include 'navbar.html' %}</div>
+    <div class="container mt-4">
+      <h1>Goods Received Note List</h1>
+      <ul class="list-group">
+        {% for grn in grns %}
+        <li class="list-group-item">
+          <a href="{% url 'grn_detail' grn.pk %}" class="text-dark"
+            >GRN#{{ grn.id }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+{% endblock %}

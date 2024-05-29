@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Supplier</title>
+</head>
+<body>
+    <div>{% include 'navbar.html' %}</div>
+    <div class="container mt-4">
+        <div class="card">
+            <h5 class="card-header">Delete Requisition</h5>
+            <div class="card-body">
+                <p>Are sure you want to delete Requisition#{{ requisition.id }}?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+ 

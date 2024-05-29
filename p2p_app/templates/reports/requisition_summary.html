@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}Requisition Summary{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Requisition Summary</h1>
+    <form method="get" action="">
+        <div class="form-group">
+            <label for="date_from">From Date</label>
+            <input type="date" id="date_from" name="date_from" class="form-control" value="{{ date_from }}">
+        </div>
+        <div class="form-group">
+            <label for="date_to">To Date</label>
+            <input type="date" id="date_to" name="date_to" class="form-control" value="{{ date_to }}">
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    <p><strong>Total Count:</strong> {{ summary.total_count }}</p>
+    
+    <h3>Status Breakdown</h3>
+    <ul>
+        {% for status in status_summary %}
+            <li>{{ status.status }}: {{ status.count }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Monthly Breakdown</h3>
+    <canvas id="requisitionChart" width="400" height="200"></canvas>
+    <script>
+        var ctx = document.getElementById('requisitionChart').getContext('2d');
+        var requisitionChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    {% for data in monthly_data %}
+                        "{{ data.month }}",
+                    {% endfor %}
+                ],
+                datasets: [{
+                    label: 'Total Count',
+                    data: [
+                        {% for data in monthly_data %}
+                            {{ data.total_count }},
+                        {% endfor %}
+                    ],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}

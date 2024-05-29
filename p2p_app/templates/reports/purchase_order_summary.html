@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %}Purchase Order Summary{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Purchase Order Summary</h1>
+  <form method="get" action="" class="row g-3">
+    <div class="col-md-6">
+      <label for="date_from" class="form-label">From Date</label>
+      <input type="date" id="date_from" name="date_from" class="form-control" value="{{ date_from }}" />
+    </div>
+    <div class="col-md-6">
+      <label for="date_to" class="form-label">To Date</label>
+      <input type="date" id="date_to" name="date_to" class="form-control" value="{{ date_to }}" />
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+  </form>
+
+  <div class="mt-4">
+    <p><strong>Total Amount:</strong> {{ summary.total_amount }}</p>
+    <p><strong>Total Count:</strong> {{ summary.total_count }}</p>
+    <p><strong>Average Amount:</strong> {{ summary.average_amount }}</p>
+  </div>
+
+  <div class="mt-4">
+    <h3>Status Breakdown</h3>
+    <ul class="list-group">
+      {% for status in status_summary %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ status.status }}
+          <span class="badge bg-primary rounded-pill">{{ status.count }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="mt-4">
+    <h3>Monthly Breakdown</h3>
+    <canvas id="purchaseOrderChart" width="400" height="200"></canvas>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('purchaseOrderChart').getContext('2d');
+    var purchaseOrderChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          {% for data in monthly_data %}
+            "{{ data.month }}"{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ],
+        datasets: [{
+          label: 'Total Amount',
+          data: [
+            {% for data in monthly_data %}
+              {{ data.total_amount }}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+          ],
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}

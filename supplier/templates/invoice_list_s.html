@@ -1,0 +1,35 @@
+{% extends 'supplier_layout.html' %}
+
+{% block title %}Invoice List{% endblock %}
+
+{% block content %}
+    <div class="navbar">{% include 'navbar.html' %}</div>
+    <div class="container mt-4">
+      <h1>Invoice List</h1>
+      <form method="GET">
+        <div class="form-group">
+            <label for="search_criteria">Search by:</label>
+            <select name="search_criteria" class="form-control" id="search_criteria">
+                <option value="item_name" name="item_name">Item Name</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="search_keyword">Keyword:</label>
+            <input type="text" name="search_keyword" class="form-control" id="search_keyword">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <ul class="list-group">
+        {% for invoice in invoices %}
+        <li class="list-group-item">
+          <a href="{% url 'invoice_detail' invoice.pk %}" class="text-dark"
+            >Invoice#{{ invoice.id }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="{% url 'add_invoice' %}" class="btn btn-primary mt-3"
+        >Add Invoice</a
+      >
+    </div>
+{% endblock %}

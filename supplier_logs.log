@@ -8440,3 +8440,4 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 
 2024-06-03 15:40:23,708 - WARNING - Not Found: /api/v1/broker
 2024-06-03 15:40:23,748 - WARNING - Not Found: /api/v1/inv/sector
 2024-06-03 15:40:25,645 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 16:01:15,505 - INFO - Watching for file changes with StatReloader

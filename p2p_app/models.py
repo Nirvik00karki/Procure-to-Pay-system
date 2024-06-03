@@ -8,6 +8,9 @@ from django.utils import timezone
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
+    firstname = models.TextField(max_length=255, default='')
+    lastname = models.TextField(max_length=255, default='')
+
     ROLE_CHOICES = (
         ('admin', 'Admin'),
         ('supplier', 'Supplier'),

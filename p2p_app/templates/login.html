@@ -7,12 +7,13 @@
     <title>User Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
     <div>{% include 'navbar.html' %}</div>
     <div class="container">
-        <div class="card p-4 shadow">
-            <h2 class="text-center">User Login</h2>
+        <div class="card-one">
+            <h2 class="text">User Login</h2>
             <form method="post" action="{% url 'login' %}" class="needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="form-group">

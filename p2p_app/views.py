@@ -43,7 +43,7 @@ def user_login(request):
             elif user.role == 'user':
                 return redirect('dashboard')
             elif user.role == 'admin':
-                return redirect('admin_dashboard')
+                return redirect('pending_requisitions')
         else:
             messages.error(request, 'Invalid username or password')
             return redirect('login') 
@@ -52,13 +52,13 @@ def user_login(request):
 
 def register(request):
     if request.method == 'POST':
-        # firstname = request.POST.get('fname')
-        # lastname = request.POST.get('lname')
+        firstname = request.POST.get('fname')
+        lastname = request.POST.get('lname')
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        CustomUser.objects.create_user(username=username, email=email, password=password)
+        CustomUser.objects.create_user(username=username, email=email, password=password, firstname=firstname,lastname=lastname)
 
         return redirect('login') 
     else:

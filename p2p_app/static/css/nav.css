@@ -1,0 +1,9 @@
+.nav-1{
+    display: flex;
+    justify-content: flex-end;
+    /* gap: 200px; */
+    /* width: 800px; */
+    /* max-width: max-content; */
+    /* width: 1800px; */
+    /* border: 1px solid black; */
+}

@@ -4,7 +4,12 @@
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 h2 {
@@ -43,3 +48,23 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
+.card {
+    
+    height: 700px;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid black;
+
+}
+.text{
+    margin-top: 50px;
+}
+.card-one{
+    height: 500px;
+    width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) ;
+    padding: 10px;
+    /* border-radius: 10px; */
+}
+
+

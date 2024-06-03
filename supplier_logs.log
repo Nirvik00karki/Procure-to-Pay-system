@@ -8351,3 +8351,92 @@ Traceback (most recent call last):
     raise ValueError("ModelForm has no model class specified.")
 ValueError: ModelForm has no model class specified.
 2024-06-03 12:35:21,291 - INFO - D:\P2P-system\p2p_app\forms.py changed, reloading.
+2024-06-03 12:35:21,820 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:55:27,355 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\P2P-system\p2p_app\views.py", line 46, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-06-03 14:55:59,568 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\P2P-system\p2p_app\views.py", line 46, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\reejan\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-06-03 14:56:35,921 - INFO - D:\P2P-system\p2p_app\views.py changed, reloading.
+2024-06-03 14:56:36,592 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:56:39,121 - INFO - D:\P2P-system\p2p_app\views.py changed, reloading.
+2024-06-03 14:56:39,552 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:56:40,984 - INFO - D:\P2P-system\p2p_app\views.py changed, reloading.
+2024-06-03 14:56:41,414 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:56:42,830 - INFO - D:\P2P-system\p2p_app\views.py changed, reloading.
+2024-06-03 14:56:43,257 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:56:56,946 - INFO - D:\P2P-system\p2p_app\views.py changed, reloading.
+2024-06-03 14:56:57,365 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:57:02,958 - WARNING - Forbidden (CSRF token from POST incorrect.): /login/
+2024-06-03 15:39:47,734 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:39:51,334 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:39:53,676 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:07,236 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:07,363 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:07,441 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:07,911 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:07,973 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:08,030 - WARNING - Not Found: /api/v1/staff
+2024-06-03 15:40:08,095 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:08,161 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:08,224 - WARNING - Not Found: /api/v1/staff
+2024-06-03 15:40:13,333 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:13,442 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:13,513 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:14,578 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:14,641 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:18,940 - WARNING - Not Found: /api/v1/inv/banks
+2024-06-03 15:40:18,995 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:19,048 - WARNING - Not Found: /api/v1/broker
+2024-06-03 15:40:19,101 - WARNING - Not Found: /api/v1/inv/sector
+2024-06-03 15:40:19,288 - WARNING - Not Found: /api/v1/dashboard
+2024-06-03 15:40:23,399 - WARNING - Not Found: /api/v1/inv/banks
+2024-06-03 15:40:23,446 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:23,491 - WARNING - Not Found: /api/v1/broker
+2024-06-03 15:40:23,532 - WARNING - Not Found: /api/v1/inv/sector
+2024-06-03 15:40:23,612 - WARNING - Not Found: /api/v1/inv/banks
+2024-06-03 15:40:23,661 - WARNING - Not Found: /api/v1/inv/org-branches
+2024-06-03 15:40:23,708 - WARNING - Not Found: /api/v1/broker
+2024-06-03 15:40:23,748 - WARNING - Not Found: /api/v1/inv/sector
+2024-06-03 15:40:25,645 - WARNING - Not Found: /api/v1/dashboard

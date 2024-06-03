@@ -43,7 +43,7 @@ def user_login(request):
             elif user.role == 'user':
                 return redirect('dashboard')
             elif user.role == 'admin':
-                return redirect('admin_dashboard')
+                return redirect('pending_requisitions')
         else:
             messages.error(request, 'Invalid username or password')
             return redirect('login') 

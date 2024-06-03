@@ -1,23 +1,68 @@
-{% extends 'layout_supplier.html' %}
+ {% extends 'layout_supplier.html' %}
 
-{% block title %}Supplier List{% endblock %}
+{% block title %}Supplier List{% endblock %} -
 
-{% block content %}
-    <div class="navbar">{% include 'navbar.html' %}</div>
+ {% block content %}
+<style>
+    .container-1{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        /* border: 1px solid black; */
+        /* padding-left: 100px; */
+        /* width: 200px; */
+}
+        /* margin-left: 100px; */
     
-    <div class="container">
-        <h1>Supplier List</h1>
+    .supplier-item{
+        width: 1000px;
+        /* max-width: max-content; */
+    }
+    .navvv{
+        /* border: 1px solid black; */
+        display: flex;
+        justify-content: flex-end;
+        background-color: white;
+        /* height: 80px; */
+        align-items: center;
+
+    }
+    .container{
+        /* border: 1px solid black; */
+        height: 0px;
+        background-color: inherit;
+        border: none;
+        box-shadow: none;
+    }
+    .nav-1{
+        height: 60px;
+    }
+  
+   
+
+</style>
+<div class="navvv">
+
+    <div class="nav-1">
+        {% include 'navbar.html' %}
+    </div>
+</div>
+    
+    <div class="container-1">
+        <h1 class="heading">Supplier List</h1>
         <form method="get" class="search-form">
             {{ form.as_p }}
             <button type="submit" class="btn-search">Search</button>
         </form>
         <ul class="supplier-list">
             {% for supplier in suppliers %}
-                <li class="supplier-item">
+                <li class="supplier-item" style="list-style: none;">
                     <a href="{% url 'supplier_detail' supplier.pk %}" class="supplier-link">{{ supplier.name }}</a>
                 </li>
             {% endfor %}
         </ul>
         <a href="{% url 'add_supplier' %}" class="btn-add-supplier">Add Supplier</a>
     </div>
+
 {% endblock %}

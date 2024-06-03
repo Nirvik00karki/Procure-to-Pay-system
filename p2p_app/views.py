@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect,get_object_or_404
-from django.http import HttpResponseForbidden
 from reportlab.lib.units import inch
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import permission_required
@@ -8,14 +7,16 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponse
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
-from .models import Supplier, PurchaseOrder, Requisition, Invoice, CustomUser, GoodsReceivedNotice
+from .models import Supplier, PurchaseOrder, Requisition, Invoice, CustomUser, GoodsReceivedNotice, Product
+from payment.models import Payment
+from payment.forms import PaymentForm
 from .forms import SupplierForm, PurchaseOrderForm, RequisitionForm, InvoiceForm, SupplierSearchForm, GoodsReceivedNoticeForm
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from django.db.models import Sum, Count, Avg
 from django.db.models.functions import TruncMonth
-from django.contrib.auth.decorators import user_passes_test
+import stripe
+from django.conf import settings
 
 def dashboard_view(request):
     return render(request, 'dashboard.html')
@@ -43,7 +44,7 @@ def user_login(request):
             elif user.role == 'user':
                 return redirect('dashboard')
             elif user.role == 'admin':
-                return redirect('admin_dashboard')
+                return redirect('pending_requisitions')
         else:
             messages.error(request, 'Invalid username or password')
             return redirect('login') 
@@ -77,6 +78,11 @@ def custom_permission_denied_view(request, exception=None):
 
 def home_view(request):
     return render(request, 'home.html')
+def req_creation_view(request):
+    return render(request, 'requisition/requform.html')
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'requisition/product_list.html', {'products': products})
 
 # def admin_dashboard_view(request):
 #     return render(request, 'admin_dashboard.html')
@@ -281,9 +287,46 @@ def invoice_list(request):
     return render(request, 'invoice/invoice_list.html', {'invoices': invoices})
 
 # @user_passes_test(lambda u: u.groups.filter(name='Supplier').exists())
-def invoice_detail(request, pk):
+def invoice_detail(request, pk, render_payment_page=False):
     invoice = get_object_or_404(Invoice, pk=pk)
+    print(invoice.pk)
+    if render_payment_page:
+        if request.method == 'POST':
+            form = PaymentForm(request.POST)
+            if form.is_valid():
+                stripe_token = form.cleaned_data['stripe_token']
+                try:
+                    charge = stripe.Charge.create(
+                        amount=int(invoice.amount * 100),  # Convert amount to cents
+                        currency='usd',
+                        description='Payment for Invoice {}'.format(invoice.pk),
+                        source=stripe_token,
+                    )
+
+                    # Save the payment information in the database
+                    Payment.objects.create(
+                        user=request.user,
+                        stripe_charge_id=charge.id,
+                        amount=invoice.amount,
+                        currency='usd',  
+                        description=charge.description,
+                        status=charge.status,
+                    )
+
+                    return redirect('payment_success')
+                except stripe.error.StripeError as e:
+                    return render(request, 'payment_error.html', {'error': str(e)})
+        else:
+            form = PaymentForm()
+        context = {
+            'invoice': invoice,
+            'form': form,
+            'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY,
+            'pk': invoice.pk,
+        }
+        return render(request, 'payment.html', context)
     return render(request, 'invoice/invoice_detail.html', {'invoice': invoice})
+
 
 # @login_required
 # @user_passes_test(lambda u: u.groups.filter(name='Supplier').exists())
@@ -338,8 +381,12 @@ def generate_requisition_pdf(request, requisition_id):
     requisition_data = [
         ["Requisition ID", requisition.id],
         ["Department", requisition.department],
-        ["Description", requisition.description],
+        ["Product", requisition.product],
+        ["Unit Price", requisition.unit_price],
+        ["Quantity", requisition.quantity],
+        # ["Description", requisition.description],
         ["Urgency", requisition.urgency],
+        ["Sub-Total", requisition.subtotal],
         ["Issued Date", requisition.issued_date.strftime('%Y-%m-%d')],
         ["Shipping Address", requisition.shipping_address],
         ["Payment Method", requisition.payment_method],

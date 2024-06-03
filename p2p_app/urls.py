@@ -40,6 +40,8 @@ urlpatterns = [
     path('reports/requisition_summary/', views.requisition_summary, name='requisition_summary'),
     # path('admin_dashboard/', views.admin_dashboard_view, name='admin_dashboard'),
     path('admin_dashboard/', views.pending_requisitions, name='pending_requisitions'),
-
+    path('payment/<int:pk>/', views.invoice_detail, kwargs={'render_payment_page': True}, name='payment'),
+    path('products/', views.product_list, name='product_list'),
+    path('req_create/', views.req_creation_view, name='req_create'),
 ]
 handler403 = views.custom_permission_denied_view

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'p2p_app',
     'supplier',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -71,6 +72,28 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'p2p_app.CustomUser'
 
+STRIPE_SECRET_KEY = 'sk_test_51PLezGCI6qS6EIv7HcKBsMLogSEPmIg1HPmTlORMymHQPDmzJH5bMwzpGg7kGoYND4zUkBwFrtDJ6JT7SyTfnNxw00HbTVwSQF'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51PLezGCI6qS6EIv7u8pH7ADgc7Kx5Dnq9h2jmwFZStm3wSfD8CYxEfIpADz7biE7PmPkiAUZpOHFm6TXlqYzIEKl00DJxvNIAK'
+
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'ERROR',
+#             'class': 'logging.FileHandler',
+#             'filename': 'django_error.log',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#     },
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

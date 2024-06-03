@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container h1 {
+            color: #ff6347; /* Tomato */
+        }
+        .container p {
+            font-size: 18px;
+            color: #333;
+        }
+        .error-message {
+            margin-top: 20px;
+            color: #ff6347; /* Tomato */
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6347; /* Tomato */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .back-link:hover {
+            background-color: #ff4838; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Error</h1>
+        <p>An error occurred while processing your payment:</p>
+        <p class="error-message">{{ error }}</p>
+    </div>
+</body>
+</html>

@@ -7735,3 +7735,2345 @@ django.core.exceptions.PermissionDenied
 2024-05-27 15:57:06,616 - WARNING - Not Found: /favicon.ico
 2024-05-29 10:44:19,602 - INFO - Watching for file changes with StatReloader
 2024-05-29 10:44:22,883 - WARNING - Not Found: /favicon.ico
+2024-05-29 10:52:09,589 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:32:31,357 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:35:57,778 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:00,421 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:05,231 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:06,058 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:08,770 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:09,850 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:13,393 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:14,812 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:20,529 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:21,656 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:23,477 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:24,506 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:31,649 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:32,163 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:35,626 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:36,188 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:42,955 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:43,592 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:36:51,022 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:36:51,797 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:41:04,837 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:41:06,176 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:41:09,556 - INFO - C:\P2P\payment\forms.py changed, reloading.
+2024-05-29 11:41:10,328 - INFO - Watching for file changes with StatReloader
+2024-05-29 11:55:54,409 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 11:55:56,108 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=200
+2024-05-29 11:56:58,135 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 11:56:59,786 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=402
+2024-05-29 11:56:59,787 - INFO - error_code=card_declined error_message='Your card has insufficient funds.' error_param=None error_type=card_error message='Stripe API error received'
+2024-05-29 11:57:00,139 - ERROR - Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "C:\P2P\payment\views.py", line 17, in payment_view
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.CardError: Request req_qDHe9WOYdi47BS: Your card has insufficient funds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\payment\views.py", line 34, in payment_view
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: payment_error.html
+2024-05-29 11:58:13,904 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 11:58:15,043 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=402
+2024-05-29 11:58:15,043 - INFO - error_code=card_declined error_message='Your card has insufficient funds.' error_param=None error_type=card_error message='Stripe API error received'
+2024-05-29 12:50:02,833 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 12:50:04,262 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:50:40,868 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:50:44,198 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:50:55,428 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:50:56,574 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:51:00,508 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:51:01,295 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:51:02,861 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:51:03,852 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:51:09,809 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:51:10,633 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:51:32,471 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:51:33,439 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:51:39,332 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:51:40,175 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:51:44,172 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:51:44,972 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:51:50,072 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:51:50,803 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:52:05,683 - INFO - C:\P2P\p2p_system\settings.py changed, reloading.
+2024-05-29 12:52:06,540 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:52:27,893 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 12:52:28,609 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:52:45,288 - INFO - C:\P2P\payment\urls.py changed, reloading.
+2024-05-29 12:52:45,947 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:53:03,236 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:53:05,267 - INFO - Watching for file changes with StatReloader
+2024-05-29 12:54:20,438 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 12:54:21,417 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:34:43,384 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:34:45,137 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:34:48,705 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:34:49,500 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:34:55,315 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:34:55,968 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:35:28,610 - ERROR - Internal Server Error: /invoices/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 323, in invoice_detail
+    return render(request, 'invoice/invoice_detail.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' not found. 'payment' is not a valid view function or pattern name.
+2024-05-29 13:35:54,777 - ERROR - Internal Server Error: /invoices/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 323, in invoice_detail
+    return render(request, 'invoice/invoice_detail.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' not found. 'payment' is not a valid view function or pattern name.
+2024-05-29 13:35:56,666 - ERROR - Internal Server Error: /invoices/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 323, in invoice_detail
+    return render(request, 'invoice/invoice_detail.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' not found. 'payment' is not a valid view function or pattern name.
+2024-05-29 13:36:52,592 - INFO - C:\P2P\payment\urls.py changed, reloading.
+2024-05-29 13:36:53,340 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:37:03,660 - ERROR - Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\payment\views.py", line 11, in payment_view
+    return render(request, 'payment.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'invoice_detail' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['invoices/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 13:41:24,986 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:41:26,227 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:41:44,828 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 13:41:46,047 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:44:40,383 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:44:41,190 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:44:45,681 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:44:46,298 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:45:04,220 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:45:04,972 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:45:07,872 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 13:45:08,539 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:54:20,622 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 13:54:21,536 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:54:47,977 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 13:54:48,663 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:59:42,624 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 13:59:45,204 - INFO - Watching for file changes with StatReloader
+2024-05-29 13:59:52,869 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 13:59:54,395 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:00,692 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:01,670 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:05,720 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:06,273 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:16,003 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:16,699 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:20,354 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:21,268 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:27,048 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:27,670 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:31,420 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:32,309 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:39,235 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:39,989 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:50,778 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:51,755 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:00:56,010 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:00:57,133 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:01:09,989 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:01:11,998 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:01:38,734 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:01:39,904 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:05:18,988 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:05:20,172 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:05:24,038 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:05:25,206 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:05:30,129 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:05:31,632 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:06:27,842 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:06:28,501 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:06:35,111 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:06:36,119 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:06:41,539 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:06:42,553 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:06:50,014 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:06:51,390 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:08:30,357 - INFO - C:\P2P\p2p_app\urls.py changed, reloading.
+2024-05-29 14:08:33,241 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:08:39,896 - INFO - C:\P2P\p2p_app\urls.py changed, reloading.
+2024-05-29 14:08:41,340 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:08:48,990 - INFO - C:\P2P\p2p_app\urls.py changed, reloading.
+2024-05-29 14:08:49,750 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:14:07,199 - ERROR - Internal Server Error: /payment/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\payment\views.py", line 13, in payment_view
+    invoice = get
+              ^^^
+NameError: name 'get' is not defined
+2024-05-29 14:14:28,987 - INFO - C:\P2P\payment\views.py changed, reloading.
+2024-05-29 14:14:30,026 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:14:35,176 - INFO - C:\P2P\payment\urls.py changed, reloading.
+2024-05-29 14:14:35,882 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:14:48,561 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 320, in invoice_detail
+    return render(request, 'payment.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with no arguments not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:14:52,802 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 320, in invoice_detail
+    return render(request, 'payment.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with no arguments not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:16:21,144 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:16:22,760 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=200
+2024-05-29 14:16:22,821 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 301, in invoice_detail
+    Payment.objects.create(
+  File "C:\P2P\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Payment() got unexpected keyword arguments: 'invoice'
+2024-05-29 14:17:50,544 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:17:51,445 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:18:02,789 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:18:03,691 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:18:03,692 - INFO - error_code=token_already_used error_message='You cannot use a Stripe token more than once: tok_1PLhuoCI6qS6EIv7h8gHrkF0.' error_param=None error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:18:03,819 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 293, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_Yhfhl2oKGY3ySG: You cannot use a Stripe token more than once: tok_1PLhuoCI6qS6EIv7h8gHrkF0.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 311, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with no arguments not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:19:49,164 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:19:50,028 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:19:50,028 - INFO - error_code=token_already_used error_message='You cannot use a Stripe token more than once: tok_1PLhuoCI6qS6EIv7h8gHrkF0.' error_param=None error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:19:50,071 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 293, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_mDexBGQT3MzTt2: You cannot use a Stripe token more than once: tok_1PLhuoCI6qS6EIv7h8gHrkF0.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 311, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:20:22,790 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:20:23,166 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:20:23,167 - INFO - error_code=token_already_used error_message='You cannot use a Stripe token more than once: tok_1PLhuoCI6qS6EIv7h8gHrkF0.' error_param=None error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:20:23,238 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 293, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_l1gqLidxg1wC8u: You cannot use a Stripe token more than once: tok_1PLhuoCI6qS6EIv7h8gHrkF0.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 311, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:22:18,032 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:22:18,937 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:22:18,938 - INFO - error_code=amount_too_large error_message='Amount must be no more than $999,999.99' error_param=amount error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:22:19,075 - ERROR - Internal Server Error: /payment/3/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 293, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_mCfMGtc2OOMWGa: Amount must be no more than $999,999.99
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 311, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:25:08,993 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:25:09,801 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:25:09,801 - INFO - error_code=amount_too_large error_message='Amount must be no more than $999,999.99' error_param=amount error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:25:09,840 - ERROR - Internal Server Error: /payment/3/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 293, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_nDlodrGAVeNvm0: Amount must be no more than $999,999.99
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 311, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:26:27,688 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:26:28,688 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:26:33,459 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:26:34,226 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:26:37,404 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:26:38,185 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:26:53,015 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:26:54,531 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:27:31,313 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:27:32,580 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=402
+2024-05-29 14:27:32,581 - INFO - error_code=card_declined error_message='Your card has insufficient funds.' error_param=None error_type=card_error message='Stripe API error received'
+2024-05-29 14:27:32,651 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 294, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.CardError: Request req_DgujzbZImV8tNc: Your card has insufficient funds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 312, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:40:37,443 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:40:39,058 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=200
+2024-05-29 14:40:39,239 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: payment_payment.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 302, in invoice_detail
+    Payment.objects.create(
+  File "C:\P2P\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\P2P\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: payment_payment.user_id
+2024-05-29 14:50:39,304 - INFO - C:\P2P\p2p_app\urls.py changed, reloading.
+2024-05-29 14:50:41,544 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:51:16,698 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:51:18,347 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=200
+2024-05-29 14:51:18,454 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: payment_payment.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 302, in invoice_detail
+    Payment.objects.create(
+  File "C:\P2P\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\P2P\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: payment_payment.user_id
+2024-05-29 14:51:37,583 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:51:38,321 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:51:38,322 - INFO - error_code=token_already_used error_message='You cannot use a Stripe token more than once: tok_1PLiSbCI6qS6EIv7TxUwPV6q.' error_param=None error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:51:38,379 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 294, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_oE256YMmwEKrKa: You cannot use a Stripe token more than once: tok_1PLiSbCI6qS6EIv7TxUwPV6q.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 312, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:56:14,079 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:56:15,545 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:56:22,698 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:56:23,603 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:56:23,604 - INFO - error_code=token_already_used error_message='You cannot use a Stripe token more than once: tok_1PLiSbCI6qS6EIv7TxUwPV6q.' error_param=None error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:56:23,696 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 294, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_6zxBHcG9ILApma: You cannot use a Stripe token more than once: tok_1PLiSbCI6qS6EIv7TxUwPV6q.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 312, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e), 'pk': invoice.pk})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:57:15,072 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:57:15,884 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:57:18,859 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:57:19,633 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:57:22,586 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:57:23,312 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:57:27,289 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:57:27,980 - INFO - Watching for file changes with StatReloader
+2024-05-29 14:57:37,197 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 14:57:38,156 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 14:57:38,156 - INFO - error_code=token_already_used error_message='You cannot use a Stripe token more than once: tok_1PLiSbCI6qS6EIv7TxUwPV6q.' error_param=None error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 14:57:38,242 - ERROR - Internal Server Error: /payment/2/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 294, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_q7JmtmFeT8Q6C1: You cannot use a Stripe token more than once: tok_1PLiSbCI6qS6EIv7TxUwPV6q.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 312, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 14:59:52,908 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 14:59:53,892 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:00:44,225 - INFO - C:\P2P\p2p_system\settings.py changed, reloading.
+2024-05-29 15:01:27,946 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:03:28,418 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 15:03:29,216 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:03:40,764 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 15:03:41,499 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:03:54,447 - WARNING - Forbidden (Permission denied): /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 91, in pending_requisitions
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2024-05-29 15:05:33,861 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 47, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-05-29 15:09:16,607 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 15:09:18,128 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=200
+2024-05-29 15:09:18,183 - ERROR - Internal Server Error: /payment/1/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: payment_payment.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 302, in invoice_detail
+    Payment.objects.create(
+  File "C:\P2P\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 822, in save
+    self.save_base(
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 1067, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\base.py", line 1108, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\P2P\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: payment_payment.user_id
+2024-05-29 15:11:25,705 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 15:11:27,045 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:11:34,651 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 15:11:35,230 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:11:44,822 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 15:11:46,455 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:11:51,930 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-29 15:11:53,062 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:12:40,564 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 15:12:42,104 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=200
+2024-05-29 15:14:25,231 - WARNING - Forbidden (Permission denied): /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 91, in pending_requisitions
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2024-05-29 15:15:48,005 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 15:15:48,932 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 15:15:48,933 - INFO - error_code=amount_too_large error_message='Amount must be no more than $999,999.99' error_param=amount error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 15:15:49,019 - ERROR - Internal Server Error: /payment/3/
+Traceback (most recent call last):
+  File "C:\P2P\p2p_app\views.py", line 294, in invoice_detail
+    charge = stripe.Charge.create(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_charge.py", line 2455, in create
+    cls._static_request(
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_resource.py", line 177, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 196, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 732, in _interpret_response
+    self.handle_error_response(rbody, rcode, resp.data, rheaders)
+  File "C:\P2P\env\Lib\site-packages\stripe\_api_requestor.py", line 321, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_OledPXitqDa5bS: Amount must be no more than $999,999.99
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 313, in invoice_detail
+    return render(request, 'payment_error.html', {'error': str(e)})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'payment' with keyword arguments '{'pk': ''}' not found. 1 pattern(s) tried: ['payment/(?P<pk>[0-9]+)/\\Z']
+2024-05-29 15:16:09,114 - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/charges
+2024-05-29 15:16:09,847 - INFO - message='Stripe API response' path=https://api.stripe.com/v1/charges response_code=400
+2024-05-29 15:16:09,848 - INFO - error_code=amount_too_large error_message='Amount must be no more than $999,999.99' error_param=amount error_type=invalid_request_error message='Stripe API error received'
+2024-05-29 15:41:47,084 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-05-29 15:41:48,883 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:41:54,468 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-05-29 15:41:55,224 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:42:04,758 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-05-29 15:42:05,276 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:42:11,313 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-05-29 15:42:12,112 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:42:15,452 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-05-29 15:42:16,685 - INFO - Watching for file changes with StatReloader
+2024-05-29 15:44:15,291 - INFO - Watching for file changes with StatReloader
+2024-05-30 12:04:26,310 - INFO - Watching for file changes with StatReloader
+2024-05-30 12:04:31,660 - WARNING - Not Found: /favicon.ico
+2024-05-30 13:32:21,974 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 47, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-05-30 13:34:12,042 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 47, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-05-30 13:36:01,753 - WARNING - Forbidden (Permission denied): /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 91, in pending_requisitions
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2024-05-30 13:36:17,650 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 47, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-05-30 13:37:56,915 - WARNING - Forbidden (CSRF token from POST incorrect.): /login/
+2024-05-30 13:38:14,095 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 47, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-05-30 13:38:32,985 - WARNING - Forbidden (Permission denied): /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 91, in pending_requisitions
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2024-05-30 13:38:35,977 - WARNING - Forbidden (Permission denied): /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 91, in pending_requisitions
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2024-05-30 13:38:55,816 - ERROR - Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 47, in user_login
+    return redirect('admin_dashboard')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 49, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 180, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'admin_dashboard' not found. 'admin_dashboard' is not a valid view function or pattern name.
+2024-05-30 13:39:29,146 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-05-30 13:39:30,608 - INFO - Watching for file changes with StatReloader
+2024-06-03 10:44:25,251 - INFO - Watching for file changes with StatReloader
+2024-06-03 10:44:33,296 - WARNING - Not Found: /favicon.ico
+2024-06-03 10:49:02,507 - WARNING - Forbidden (Permission denied): /invoices/3/edit/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 347, in edit_invoice
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2024-06-03 11:08:02,783 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:04,576 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:09,290 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:10,039 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:12,383 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:12,962 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:14,296 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:14,794 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:18,183 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:18,868 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:21,222 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:21,856 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:28,049 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:28,798 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:33,864 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:34,647 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:08:37,711 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:08:38,502 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:11:45,395 - ERROR - Internal Server Error: /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: p2p_app_requisition.order_deadline
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 101, in pending_requisitions
+    return render(request, 'admin_dashboard.html', {'pending_requisitions': pending_requisitions})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 198, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\P2P\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: p2p_app_requisition.order_deadline
+2024-06-03 11:12:10,138 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:12:11,187 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:40:15,373 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:40:17,264 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:40:44,613 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:40:45,380 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:40:52,716 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:40:53,568 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:41:05,208 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:41:05,950 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:41:10,957 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:41:11,774 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:41:18,433 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:41:19,133 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:41:21,608 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:41:22,354 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:41:28,971 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:41:29,497 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:41:33,966 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:41:35,187 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:46:11,392 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:46:12,462 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:48:54,572 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:48:55,537 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:48:57,872 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 11:48:58,476 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:57:36,327 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 11:57:37,184 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:57:43,889 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 11:57:44,499 - INFO - Watching for file changes with StatReloader
+2024-06-03 11:57:54,248 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 11:57:54,798 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:10:34,380 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:10:35,154 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:10:38,522 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:10:39,346 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:16:36,379 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:16:37,084 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:16:42,700 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:16:43,327 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:16:45,866 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:16:46,458 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:16:49,023 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:16:49,652 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:16:52,147 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:16:52,836 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:16:57,492 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:16:58,160 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:17:20,503 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:17:21,046 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:17:23,633 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:17:24,263 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:17:26,819 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:17:27,418 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:17:31,110 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:17:31,751 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:18:35,962 - INFO - C:\P2P\p2p_app\admin.py changed, reloading.
+2024-06-03 12:18:36,576 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:18:39,025 - INFO - C:\P2P\p2p_app\admin.py changed, reloading.
+2024-06-03 12:18:39,602 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:31:07,037 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:31:11,642 - WARNING - Not Found: /favicon.ico
+2024-06-03 12:31:23,216 - WARNING - Not Found: /product_list
+2024-06-03 12:31:31,180 - INFO - C:\P2P\p2p_app\urls.py changed, reloading.
+2024-06-03 12:31:32,046 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:31:39,151 - ERROR - Internal Server Error: /products/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 85, in product_list
+    return render(request, 'product_list.html', {'products': products})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: product_list.html
+2024-06-03 12:32:01,343 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:32:02,180 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:32:08,972 - ERROR - Internal Server Error: /products/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 85, in product_list
+    return render(request, 'requisition/product_list.html', {'products': products})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 975, in do_if
+    nodelist = parser.parse(("endif",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 15: 'static', expected 'endif'. Did you forget to register or load this tag?
+2024-06-03 12:35:40,056 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:35:41,271 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:36:22,911 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:36:23,774 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:36:27,129 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:36:27,715 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:37:46,902 - ERROR - Internal Server Error: /requisitions/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: p2p_app_requisition.unit_price
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 228, in requisition_list
+    return render(request, 'requisition/requisition_list.html', {'requisitions': requisitions})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 198, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\P2P\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: p2p_app_requisition.unit_price
+2024-06-03 12:39:06,947 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:39:07,885 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:39:12,970 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:39:13,744 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:40:41,094 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:40:41,872 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:40:46,257 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:40:46,835 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:40:53,985 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 12:40:54,703 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:54:56,349 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:55:04,897 - ERROR - Internal Server Error: /req_create/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 82, in req_creation_view
+    return render(request, 'requisition/requiform.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: requisition/requiform.html
+2024-06-03 12:55:35,915 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 12:55:36,718 - INFO - Watching for file changes with StatReloader
+2024-06-03 12:55:39,402 - ERROR - Internal Server Error: /req_create/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 82, in req_creation_view
+    return render(request, 'requisition/requform.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 481, in parse
+    raise self.error(token, e)
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 479, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 693, in __init__
+    filter_func = parser.find_filter(filter_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 603, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'as_crispy_field'
+2024-06-03 12:57:42,957 - ERROR - Internal Server Error: /req_create/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 82, in req_creation_view
+    return render(request, 'requisition/requform.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_requisition' not found. 'create_requisition' is not a valid view function or pattern name.
+2024-06-03 14:32:28,177 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 14:32:30,141 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:33:28,123 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:33:49,972 - ERROR - Internal Server Error: /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: p2p_app_requisition.order_deadline
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 106, in pending_requisitions
+    return render(request, 'admin_dashboard.html', {'pending_requisitions': pending_requisitions})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\template\defaulttags.py", line 198, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\P2P\env\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\db\backends\sqlite3\base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: p2p_app_requisition.order_deadline
+2024-06-03 14:34:11,333 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 14:34:12,233 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:42:25,936 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 14:42:26,873 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:42:30,219 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 14:42:30,789 - INFO - Watching for file changes with StatReloader
+2024-06-03 14:44:44,960 - WARNING - Forbidden (Permission denied): /admin_dashboard/
+Traceback (most recent call last):
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\P2P\p2p_app\views.py", line 96, in pending_requisitions
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+2024-06-03 15:00:19,826 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:00:21,106 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:00:52,864 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:00:53,685 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:01:24,086 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:01:24,846 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:01:37,137 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:01:37,770 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:01:40,095 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:01:40,628 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:01:58,533 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:01:59,272 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:02:16,843 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:02:17,607 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:03:12,468 - INFO - C:\P2P\p2p_app\signals.py changed, reloading.
+2024-06-03 15:03:13,242 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:03:15,977 - INFO - C:\P2P\p2p_app\signals.py changed, reloading.
+2024-06-03 15:03:16,622 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:03:20,106 - INFO - C:\P2P\p2p_app\signals.py changed, reloading.
+2024-06-03 15:03:20,899 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:03:35,264 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:03:35,968 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:03:44,108 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:03:44,843 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:04:08,031 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:04:08,777 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:04:26,352 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:04:27,144 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:04:39,691 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:04:40,439 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:04:49,794 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:04:50,566 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:05:06,042 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:05:06,874 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:05:11,007 - INFO - C:\P2P\p2p_app\models.py changed, reloading.
+2024-06-03 15:05:12,158 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:07:37,022 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:08:45,600 - INFO - C:\P2P\p2p_app\signals.py changed, reloading.
+2024-06-03 15:08:46,262 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:10:10,077 - INFO - C:\P2P\p2p_app\signals.py changed, reloading.
+2024-06-03 15:10:10,812 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:23:07,463 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:23:08,585 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:23:19,609 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:23:20,370 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:24:07,812 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:24:08,589 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:24:16,861 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:24:17,618 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:24:52,388 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:24:53,092 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:24:59,122 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:24:59,829 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:25:02,609 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:25:03,361 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:25:06,440 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:25:07,689 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:25:11,630 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:25:12,849 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:25:26,078 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:25:26,880 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:25:33,790 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:25:34,736 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:25:39,578 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:25:40,449 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:26:01,030 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:26:01,719 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:26:07,813 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:26:08,556 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:27:28,988 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:27:29,739 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:28:30,940 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:28:31,720 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:28:51,639 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:28:52,338 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:29:07,938 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:29:08,720 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:29:30,780 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:29:31,480 - INFO - Watching for file changes with StatReloader
+2024-06-03 15:29:57,676 - INFO - C:\P2P\p2p_app\forms.py changed, reloading.
+2024-06-03 15:29:58,438 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:13:58,771 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:14:01,238 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:14:07,213 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:14:08,078 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:14:35,742 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:14:36,614 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:14:39,989 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:14:40,768 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:16:27,071 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:16:27,887 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:16:34,068 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:16:34,897 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:16:38,884 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:16:39,673 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:16:47,007 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:16:47,714 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:16:55,159 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:16:55,920 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:16:59,230 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:17:00,018 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:17:25,912 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:17:26,818 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:17:35,529 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:17:36,489 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:17:40,391 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:17:41,268 - INFO - Watching for file changes with StatReloader
+2024-06-03 16:18:18,393 - INFO - C:\P2P\p2p_app\views.py changed, reloading.
+2024-06-03 16:18:19,749 - INFO - Watching for file changes with StatReloader

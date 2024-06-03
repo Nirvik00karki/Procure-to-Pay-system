@@ -8,6 +8,9 @@ from django.utils import timezone
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
+    firstname = models.TextField(max_length=255, default='')
+    lastname = models.TextField(max_length=255, default='')
+
     ROLE_CHOICES = (
         ('admin', 'Admin'),
         ('supplier', 'Supplier'),
@@ -51,6 +54,17 @@ class Supplier(models.Model):
 
     def __str__(self):
         return self.name
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    stock = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 # @receiver(post_save, sender=Supplier)
 # def log_supplier_creation_update(sender, instance, created, **kwargs):
 #     action = 'created' if created else 'updated'
@@ -62,17 +76,30 @@ class Supplier(models.Model):
 class Requisition(models.Model):
     # created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     preferred_supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, default=1)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     department = models.CharField(max_length=100, null=True)
+    unit_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     urgency = models.CharField(max_length=20, choices=[('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')], null=True)
     description = models.TextField()
+    customer_tax = models.DecimalField(max_digits=5, decimal_places=2, default=15.00)
+    quantity = models.PositiveIntegerField(default=1)
     status = models.CharField(max_length=20, choices=[('Pending', 'Pending'), ('Approved', 'Approved'), ('Rejected', 'Rejected')])
     created_at = models.DateTimeField(auto_now_add=True)
     issued_date = models.DateField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     shipping_address = models.CharField(max_length=255, default='')
-    payment_method = models.CharField(max_length=50, default='e.g.Cash')
+    payment_method = models.CharField(max_length=50, default='Cash')
     billing_address = models.TextField(default='')
+    # order_deadline = models.DateTimeField(default=None)
+    # expected_arrival = models.DateTimeField(default=None)
+    def save(self, *args, **kwargs):
+        self.subtotal = self.calculate_subtotal()
+        super().save(*args, **kwargs)
 
+    def calculate_subtotal(self):
+        tax_amount = (self.unit_price * self.customer_tax) / 100
+        return self.unit_price + tax_amount
 
     def __str__(self):
         return f"Requisition#{self.id}"
@@ -81,8 +108,11 @@ class PurchaseOrder(models.Model):
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     requisition = models.OneToOneField(Requisition, on_delete=models.CASCADE, related_name='purchase_order', blank=True, null=True)
     # created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    item = models.CharField(max_length=20, default='e.g.Laptop')
-    amount = models.DecimalField(decimal_places=2, max_digits=10, default=1)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+    quantity = models.PositiveIntegerField(default=1)
+    unit_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    customer_tax = models.DecimalField(max_digits=5, decimal_places=2, default=15.00)
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(max_length=20, choices=[('Pending', 'Pending'), ('Approved', 'Approved'), ('Completed', 'Completed')])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -97,9 +127,12 @@ class PurchaseOrder(models.Model):
 
 class Invoice(models.Model):
     purchase_order = models.ForeignKey(PurchaseOrder, on_delete=models.CASCADE)
-    item = models.CharField(max_length=20, default='e.g.Laptop')
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+    quantity = models.PositiveIntegerField(default=1)
+    unit_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    customer_tax = models.DecimalField(max_digits=5, decimal_places=2, default=15.00)
     status = models.CharField(max_length=20, choices=[('Pending', 'Pending'), ('Paid', 'Paid')])
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     invoice_date = models.DateField()
     payment_due_date = models.DateField()
     payment_method = models.CharField(max_length=50, default='e.g.Cash')

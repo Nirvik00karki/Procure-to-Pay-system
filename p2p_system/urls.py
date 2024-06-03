@@ -7,6 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('p2p_app.urls')),
     path('', include('supplier.urls')),
+    path('', include('payment.urls')),
+
 
 ]
 if settings.DEBUG:

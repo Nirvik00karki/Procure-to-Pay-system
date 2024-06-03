@@ -1,0 +1,84 @@
+<!-- templates/requisition_form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisition Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>New Requisition</h1>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="preferred_supplier">Vendor</label>
+                {{ form.preferred_supplier }}
+            </div>
+            <div class="form-group">
+                <label for="vendor_reference">Vendor Reference</label>
+                <input type="text" name="vendor_reference" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="currency">Currency</label>
+                <input type="text" name="currency" value="USD" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="order_deadline">Order Deadline</label>
+                {{ form.order_deadline }}
+            </div>
+            <div class="form-group">
+                <label for="expected_arrival">Expected Arrival</label>
+                {{ form.expected_arrival }}
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Taxes</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ form.product }}</td>
+                        <td>{{ form.description }}</td>
+                        <td>{{ form.quantity }}</td>
+                        <td>{{ form.unit_price }}</td>
+                        <td>{{ form.customer_tax }}</td>
+                        <td>{{ form.subtotal }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <label for="shipping_address">Shipping Address</label>
+                {{ form.shipping_address }}
+            </div>
+            <div class="form-group">
+                <label for="payment_method">Payment Method</label>
+                {{ form.payment_method }}
+            </div>
+            <div class="form-group">
+                <label for="billing_address">Billing Address</label>
+                {{ form.billing_address }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -11,7 +11,11 @@ def create_purchase_order(instance, created, **kwargs):
         PurchaseOrder.objects.create(
             requisition=instance,
             supplier=supplier,
+            product=instance.product,
             status='Pending',
+            quantity=instance.quantity,
+            unit_price=instance.unit_price,
+            subtotal=instance.subtotal,
             created_at=timezone.now(),
             updated_at=timezone.now(),
             shipping_address=instance.shipping_address,

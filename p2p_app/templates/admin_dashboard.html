@@ -25,9 +25,11 @@
     <div class="content">
         <div id="profile" class="profile">
             <h2>User Profile</h2>
-            <p>Name: {{ request.user.first_name }}</p>
+            <p>Name: {{ request.user.firstname }}</p>
             <p>Email: {{ request.user.email }}</p>
             <p>Role: Admin</p>
+            <p><a href="/payment/">Pay
+            </a></p>
         </div>
         <div id="pending-requisitions" class="requisitions">
             <h2>Pending Requisitions</h2>

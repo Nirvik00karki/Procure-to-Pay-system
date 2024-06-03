@@ -12,16 +12,62 @@ class PurchaseOrderForm(forms.ModelForm):
     class Meta:
         model = PurchaseOrder
         fields = '__all__'
+        widgets = {
+            'supplier': forms.Select(attrs={'class': 'form-control'}),
+            'requisition': forms.Select(attrs={'class': 'form-control'}),
+            'product': forms.Select(attrs={'class': 'form-control'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
+            'unit_price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'customer_tax': forms.NumberInput(attrs={'class': 'form-control'}),
+            'subtotal': forms.NumberInput(attrs={'class': 'form-control'}),
+            'department': forms.TextInput(attrs={'class': 'form-control'}),
+            'urgency': forms.Select(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'shipping_address': forms.TextInput(attrs={'class': 'form-control'}),
+            'payment_method': forms.TextInput(attrs={'class': 'form-control'}),
+            'billing_address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
 
 class RequisitionForm(forms.ModelForm):
     class Meta:
         model = Requisition
         fields = '__all__'
+        widgets = {
+            'preferred_supplier': forms.Select(attrs={'class': 'form-control'}),
+            'product': forms.Select(attrs={'class': 'form-control'}),
+            'department': forms.TextInput(attrs={'class': 'form-control'}),
+            'unit_price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'urgency': forms.Select(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'customer_tax': forms.NumberInput(attrs={'class': 'form-control'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'shipping_address': forms.TextInput(attrs={'class': 'form-control'}),
+            'payment_method': forms.TextInput(attrs={'class': 'form-control'}),
+            'billing_address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'order_deadline': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
+            'expected_arrival': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
+        }
 
 class InvoiceForm(forms.ModelForm):
     class Meta:
         model = Invoice
         fields = '__all__'
+        widgets = {
+            'purchase_order': forms.Select(attrs={'class': 'form-control'}),
+            'product': forms.Select(attrs={'class': 'form-control'}),
+            'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
+            'unit_price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'customer_tax': forms.NumberInput(attrs={'class': 'form-control'}),
+            'subtotal': forms.NumberInput(attrs={'class': 'form-control'}),
+            'invoice_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'urgency': forms.Select(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'shipping_address': forms.TextInput(attrs={'class': 'form-control'}),
+            'payment_method': forms.TextInput(attrs={'class': 'form-control'}),
+            'billing_address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
 
 class SupplierSearchForm(forms.Form):
     query = forms.CharField(label='Search', max_length=100)

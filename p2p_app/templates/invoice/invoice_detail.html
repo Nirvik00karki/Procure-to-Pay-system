@@ -33,6 +33,7 @@
                         {% endif %}
                     {% endif %}              
                     <a href="{% url 'generate_invoice_pdf' invoice.id %}" class="btn btn-primary">Download as PDF</a>
+                    <a href="{% url 'payment' pk=invoice.pk %}" class="btn btn-success">Pay Now</a>
                 </div>
             </div>
         </div>

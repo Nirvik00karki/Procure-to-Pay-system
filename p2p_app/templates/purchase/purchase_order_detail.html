@@ -15,8 +15,11 @@
         <div class="card">
             <div class="card-body">
                 <p class="card-text"><strong>Supplier:</strong> {{ purchase_order.supplier.name }}</p>
-                <p class="card-text"><strong>Item:</strong> {{ purchase_order.item }}</p>
+                <p class="card-text"><strong>Product:</strong> {{ purchase_order.product }}</p>
+                <p class="card-text"><strong>Quantity:</strong> {{ purchase_order.quantity }}</p>
+                <p class="card-text"><strong>Unit Price:</strong> {{ purchase_order.unit_price }}</p>
                 <p class="card-text"><strong>Status:</strong> {{ purchase_order.status }}</p>
+                <p class="card-text"><strong>Sub-Total:</strong> {{ purchase_order.subtotal }}</p>
                 <p class="card-text"><strong>Shipping Address:</strong> {{ purchase_order.shipping_address }}</p>
                 <p class="card-text"><strong>Payment Terms:</strong> {{ purchase_order.payment_terms }}</p>
                 <p class="card-text"><strong>Payment Method:</strong> {{ purchase_order.payment_method }}</p>

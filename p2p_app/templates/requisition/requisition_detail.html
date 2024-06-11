@@ -8,26 +8,58 @@
 <body>
     <div>{% include 'navbar.html' %}</div>
     <div class="container mt-4">
-        <h1>Requisition Detail</h1>
+        <h1 class="mb-4" style="color: #333; font-size: 36px; font-family: 'Helvetica Neue', sans-serif; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Requisition Detail</h1>
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ requisition.product }}</h3>
+                <p class="card-text"><small class="text-muted">{{ requisition.issued_date }}</small></p>
+            </div>
             <div class="card-body">
-                <p class="card-text"><strong>Product:</strong> {{ requisition.product }}</p>
-                <p class="card-text"><strong>Description:</strong> {{ requisition.description }}</p>
-                <p class="card-text"><strong>Unit Price:</strong> {{ requisition.unit_price }}</p>
-                <p class="card-text"><strong>Quantity:</strong> {{ requisition.quantity }}</p>
-                <p class="card-text"><strong>Status:</strong> {{ requisition.status }}</p>
-                <p class="card-text"><strong>Department:</strong> {{ requisition.department }}</p>
-                <p class="card-text"><strong>Urgency:</strong> {{ requisition.urgency }}</p>
-                <p class="card-text"><strong>Issued Date:</strong> {{ requisition.issued_date }}</p>
-                <p class="card-text"><strong>Subtotal:</strong> {{ requisition.subtotal }}</p>
-                <p class="card-text"><strong>Shipping Address:</strong> {{ requisition.shipping_address }}</p>
-                <p class="card-text"><strong>Payment Method:</strong> {{ requisition.payment_method }}</p>
-                <p class="card-text"><strong>Billing Address:</strong> {{ requisition.billing_address }}</p>
-                <div class="btn-group" role="group" aria-label="Requisition Actions">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>{{ requisition.description }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Unit Price</th>
+                            <td>${{ requisition.unit_price }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Quantity</th>
+                            <td>{{ requisition.quantity }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td>{{ requisition.status }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Department</th>
+                            <td>{{ requisition.department }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Urgency</th>
+                            <td>{{ requisition.urgency }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Subtotal</th>
+                            <td>${{ requisition.subtotal }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Shipping Address</th>
+                            <td>{{ requisition.shipping_address }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Billing Address</th>
+                            <td>{{ requisition.billing_address }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group mt-4" role="group" aria-label="Requisition Actions">
                     <a href="{% url 'edit_requisition' requisition.pk %}" class="btn btn-primary">Edit</a>
                     <a href="{% url 'delete_requisition' requisition.pk %}" class="btn btn-danger">Delete</a>
                     <a href="{% url 'requisition_list' %}" class="btn btn-secondary">Back</a>
-                    <a href="{% url 'generate_requisition_pdf' requisition.id %}" class="btn btn-primary">Download as PDF</a>
+                    <a href="{% url 'generate_requisition_pdf' requisition.id %}" class="btn btn-success">Download as PDF</a>
                 </div>
             </div>
         </div>

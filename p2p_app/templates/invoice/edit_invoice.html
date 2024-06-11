@@ -17,5 +17,36 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#id_purchase_order').change(function() {
+                var purchaseOrderId = $(this).val();
+                if (purchaseOrderId) {
+                    $.ajax({
+                        url: '{% url "get_purchase_order_details" %}',  // Use Django URL template tag for URL
+                        data: {
+                            'purchase_order_id': purchaseOrderId
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data) {
+                                $('#id_product').val(data.product);
+                                $('#id_quantity').val(data.quantity);
+                                $('#id_unit_price').val(data.unit_price);
+                                $('#id_customer_tax').val(data.customer_tax);
+                                $('#id_subtotal').val(data.subtotal);
+                            } else {
+                                alert('No data returned');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('AJAX Error:', status, error);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

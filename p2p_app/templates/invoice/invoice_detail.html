@@ -10,17 +10,46 @@
 <body>
     <div>{% include 'navbar.html' %}</div>
     <div class="container mt-4">
-        <h1>Invoice Detail</h1>
+        <h1 class="mb-4" style="color: #333; font-size: 36px; font-family: 'Helvetica Neue', sans-serif; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Invoice Detail</h1>
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Invoice for Purchase Order #{{ invoice.purchase_order }}</h3>
+                <p class="card-text"><small class="text-muted">Invoice Date: {{ invoice.invoice_date }}</small></p>
+            </div>
             <div class="card-body">
-                <p class="card-text"><strong>Purchase Order:</strong> {{ invoice.purchase_order }}</p>
-                <p class="card-text"><strong>Amount:</strong> {{ invoice.amount }}</p>
-                <p class="card-text"><strong>Status:</strong> {{ invoice.status }}</p>
-                <p class="card-text"><strong>Payment Method:</strong> {{ invoice.payment_method }}</p>
-                <p class="card-text"><strong>Payment Due Date:</strong> {{ invoice.payment_due_date }}</p>
-                <p class="card-text"><strong>Billing Address:</strong> {{ invoice.billing_address }}</p>
-                <p class="card-text"><strong>Invoice Date:</strong> {{ invoice.invoice_date }}</p>
-                <div class="btn-group" role="group" aria-label="Invoice Actions">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Quantity</th>
+                            <td>{{ invoice.quantity }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Unit Price</th>
+                            <td>${{ invoice.unit_price }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td>{{ invoice.status }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sub-Total</th>
+                            <td>${{ invoice.subtotal }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Payment Method</th>
+                            <td>{{ invoice.payment_method }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Payment Due Date</th>
+                            <td>{{ invoice.payment_due_date }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Billing Address</th>
+                            <td>{{ invoice.billing_address }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group mt-4" role="group" aria-label="Invoice Actions">
                     <a href="{% url 'edit_invoice' invoice.pk %}" class="btn btn-primary">Edit</a>
                     <a href="{% url 'delete_invoice' invoice.pk %}" class="btn btn-danger">Delete</a>
                     {% if user.is_authenticated %}
@@ -31,9 +60,9 @@
                                 <a href="{% url 'invoice_list' %}" class="btn btn-secondary">Back</a>
                             {% endif %}
                         {% endif %}
-                    {% endif %}              
-                    <a href="{% url 'generate_invoice_pdf' invoice.id %}" class="btn btn-primary">Download as PDF</a>
-                    <a href="{% url 'payment' pk=invoice.pk %}" class="btn btn-success">Pay Now</a>
+                    {% endif %}
+                    <a href="{% url 'generate_invoice_pdf' invoice.id %}" class="btn btn-success">Download as PDF</a>
+                    <a href="{% url 'payment' pk=invoice.pk %}" class="btn btn-danger">Pay Now</a>
                 </div>
             </div>
         </div>

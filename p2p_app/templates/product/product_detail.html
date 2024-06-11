@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div>{% include 'navbar.html' %}</div>
+    
+    <div class="container mt-4">
+        <h1 class="mb-4" style="color: #333; font-size: 36px; font-family: 'Helvetica Neue', sans-serif; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Product Detail</h1>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ product.name }}</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Description</th>
+                            <td>{{ product.description }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price</th>
+                            <td>${{ product.price }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Stock</th>
+                            <td>{{ product.stock }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group mt-4" role="group" aria-label="Supplier Actions">
+                    <a href="{% url 'edit_product' product.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'product_list' %}" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,46 +1,100 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P2P System</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .hero {
+            background: url("{% static 'images/home.jpg' %}") no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 120px 0;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        /* .features {
+            background-color: lightblue;
+        } */
+        .feature-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .cta {
+            background-color: rgb(100, 181, 208);
+            color: white;
+            padding: 60px 0;
+        }
+        .cta button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+        }
+        .cta button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px 0;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-
-
+<body>
     {% include 'navbar.html' %}
 
-    <section class="hero bg-gray-200 py-16">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-semibold text-center">Streamline Your Procurement Process</h2>
+    <!-- Hero Section -->
+    <section class="hero text-center">
+        <div class="container">
+            <h2>Streamline Your Procurement Process</h2>
+            <p class="lead">Efficient requisition management, automated purchase orders, and real-time invoice tracking.</p>
+            <button class="btn btn-light btn-lg mt-3">Get Started</button>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features py-12">
-        <div class="container mx-auto">
-            <h3 class="text-2xl font-semibold text-center mb-8">Key Features</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section class="features py-5">
+        <div class="container">
+            <h3 class="text-center mb-5">Key Features</h3>
+            <div class="row">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold mb-2">Efficient Requisition Management</h4>
-                        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla felis enim, lacinia eget enim eu, consequat lobortis neque.</p>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Efficient Requisition Management</h5>
+                            <p class="card-text">Streamline the requisition process with intuitive and efficient management tools.</p>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold mb-2">Automated Purchase Order Generation</h4>
-                        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla felis enim, lacinia eget enim eu, consequat lobortis neque.</p>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Automated Purchase Order</h5>
+                            <p class="card-text">Generate purchase orders automatically to save time and reduce errors.</p>
+                        </div>
                     </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:-translate-y-1 hover:shadow-xl">
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold mb-2">Real-time Invoice Tracking</h4>
-                        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla felis enim, lacinia eget enim eu, consequat lobortis neque.</p>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Real-time Invoice Tracking</h5>
+                            <p class="card-text">Keep track of invoices in real-time and ensure timely payments and records.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,20 +102,22 @@
     </section>
 
     <!-- Call to Action Section -->
-    <section class="cta bg-blue-600 text-white py-16">
-        <div class="container mx-auto text-center">
-            <h3 class="text-3xl font-semibold mb-4">Ready to Get Started?</h3>
-            <p class="mb-8">Sign up now to experience the power of our P2P system.</p>
-            <button class="bg-white text-blue-600 py-3 px-8 rounded-full font-semibold hover:bg-blue-800 hover:text-white transition duration-300">Sign Up</button>
+    <section class="cta text-center">
+        <div class="container">
+            <h3 class="mb-4">Ready to Get Started?</h3>
+            <p class="mb-4">Sign up now to experience the power of our P2P system.</p>
+            <button class="btn btn-lg">Sign Up</button>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto text-center">
+    <footer class="footer text-center">
+        <div class="container">
             <p>&copy; 2024 P2P System. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

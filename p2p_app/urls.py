@@ -42,6 +42,13 @@ urlpatterns = [
     path('admin_dashboard/', views.pending_requisitions, name='pending_requisitions'),
     path('payment/<int:pk>/', views.invoice_detail, kwargs={'render_payment_page': True}, name='payment'),
     path('products/', views.product_list, name='product_list'),
+    path('add_product/', views.add_product, name='add_product'),
     path('req_create/', views.req_creation_view, name='req_create'),
+    path('get_product_price/', views.get_product_price, name='get_product_price'),
+    path('get-purchase-order-details/', views.get_purchase_order_details, name='get_purchase_order_details'),
+    path('product_detail/<int:pk>', views.product_detail, name='product_detail'),
+    path('products/<int:pk>/edit', views.edit_product, name='edit_product'),
+    path('delete_product/<int:pk>', views.delete_product, name='delete_product'),
+
 ]
 handler403 = views.custom_permission_denied_view

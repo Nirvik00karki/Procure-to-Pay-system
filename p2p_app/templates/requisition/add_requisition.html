@@ -51,7 +51,49 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function calculateSubtotal() {
+                var unitPrice = parseFloat($('#id_unit_price').val());
+                var quantity = parseFloat($('#id_quantity').val());
+                var customerTax = parseFloat($('#id_customer_tax').val());
+
+                if (!isNaN(unitPrice) && !isNaN(quantity) && !isNaN(customerTax)) {
+                    var subtotal = unitPrice * quantity * (1 + customerTax / 100);
+                    $('#id_subtotal').val(subtotal.toFixed(2));
+                } else {
+                    $('#id_subtotal').val('');
+                }
+            }
+
+            $('#id_product').change(function () {
+                var productId = $(this).val();
+                if (productId) {
+                    $.ajax({
+                        url: '{% url "get_product_price" %}',
+                        data: {
+                            product_id: productId,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            $('#id_unit_price').val(data.price);
+                            calculateSubtotal();
+                        },
+                        error: function (error) {
+                            console.log("Error: ", error);
+                        },
+                    });
+                } else {
+                    $('#id_unit_price').val('');
+                    calculateSubtotal();
+                }
+            });
+
+            $('#id_unit_price, #id_quantity, #id_customer_tax').on('input change', calculateSubtotal);
+            calculateSubtotal();
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

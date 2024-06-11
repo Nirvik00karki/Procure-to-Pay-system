@@ -44,6 +44,7 @@ class CustomUser(AbstractUser):
 #             ("change_requisition_status", "Can change the status of requisitions"),
 #         )
 class Supplier(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
     contact_person = models.CharField(max_length=100)
     email = models.EmailField()
@@ -58,13 +59,14 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    image = models.ImageField(upload_to='media/', blank=True, null=True)
     stock = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
 # @receiver(post_save, sender=Supplier)
 # def log_supplier_creation_update(sender, instance, created, **kwargs):
 #     action = 'created' if created else 'updated'
@@ -93,13 +95,14 @@ class Requisition(models.Model):
     billing_address = models.TextField(default='')
     # order_deadline = models.DateTimeField(default=None)
     # expected_arrival = models.DateTimeField(default=None)
-    def save(self, *args, **kwargs):
-        self.subtotal = self.calculate_subtotal()
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.subtotal = self.unit_price * Decimal(self.quantity) * (Decimal(1) + Decimal(self.customer_tax) / Decimal(100))
+    #     super().save(*args, **kwargs)
 
-    def calculate_subtotal(self):
-        tax_amount = (self.unit_price * self.customer_tax) / 100
-        return self.unit_price + tax_amount
+
+    # def calculate_subtotal(self):
+    #     tax_amount = (self.unit_price * self.customer_tax) / 100
+    #     return self.unit_price + tax_amount
 
     def __str__(self):
         return f"Requisition#{self.id}"
@@ -107,7 +110,6 @@ class Requisition(models.Model):
 class PurchaseOrder(models.Model):
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
     requisition = models.OneToOneField(Requisition, on_delete=models.CASCADE, related_name='purchase_order', blank=True, null=True)
-    # created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.PositiveIntegerField(default=1)
     unit_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
@@ -118,9 +120,16 @@ class PurchaseOrder(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     shipping_address = models.TextField(default='')
     payment_terms = models.CharField(max_length=50, null=True)
-    payment_due_date = models.DateField()
-    payment_method = models.CharField(max_length=50, default='e.g.Cash')
+    payment_method = models.CharField(max_length=50, default='Cash')
     billing_address = models.TextField(default='')
+
+    def save(self, *args, **kwargs):
+        self.subtotal = self.unit_price * Decimal(self.quantity) * (Decimal(1) + Decimal(self.customer_tax) / Decimal(100))
+        super().save(*args, **kwargs)
+
+    def calculate_subtotal(self):
+        tax_amount = (self.unit_price * self.customer_tax) / 100
+        return self.unit_price + tax_amount
 
     def __str__(self):
         return f"PO#{self.id} - {self.supplier.name}"
@@ -135,10 +144,18 @@ class Invoice(models.Model):
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     invoice_date = models.DateField()
     payment_due_date = models.DateField()
-    payment_method = models.CharField(max_length=50, default='e.g.Cash')
+    payment_method = models.CharField(max_length=50, default='Cash')
     billing_address = models.TextField(default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.subtotal = self.unit_price * Decimal(self.quantity) * (Decimal(1) + Decimal(self.customer_tax) / Decimal(100))
+        super().save(*args, **kwargs)
+        
+    def calculate_subtotal(self):
+        tax_amount = (self.unit_price * self.customer_tax) / 100
+        return self.unit_price + tax_amount
 
     def __str__(self):
         return f"Invoice#{self.id} - {self.purchase_order}"

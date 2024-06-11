@@ -6,16 +6,52 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background-color: #f8f9fa;
+        }
         .content {
             margin-left: 250px;
             padding: 20px;
+            background: linear-gradient(to bottom, rgb(198, 224, 232), white);
         }
-
         .profile {
-            padding: 20px;
-            border: 1px solid #ccc;
+            padding: 30px;
+            border: 1px solid #ddd;
             border-radius: 10px;
             background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .profile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .profile h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .profile p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .profile .btn {
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .profile .btn:hover {
+            background-color: #0056b3;
+        }
+        .requisitions {
+            margin-top: 30px;
+        }
+        .requisitions h2 {
+            margin-bottom: 20px;
+            color: #007bff;
         }
     </style>
 </head>
@@ -25,11 +61,10 @@
     <div class="content">
         <div id="profile" class="profile">
             <h2>User Profile</h2>
-            <p>Name: {{ request.user.firstname }}</p>
-            <p>Email: {{ request.user.email }}</p>
-            <p>Role: Admin</p>
-            <p><a href="/payment/">Pay
-            </a></p>
+            <p><strong>Name:</strong> {{ request.user.firstname }}</p>
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+            <p><strong>Role:</strong> User</p>
+            <a href="#" class="btn">Edit Profile</a>
         </div>
         <div id="pending-requisitions" class="requisitions">
             <h2>Pending Requisitions</h2>
@@ -38,7 +73,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Item</th>
-                        <th>Requested By</th>
+                        <!-- <th>Requested By</th> -->
                         <th>Requested Date</th>
                         <th>Actions</th>
                     </tr>
@@ -47,8 +82,8 @@
                     {% for requisition in pending_requisitions %}
                         <tr>
                             <td>{{ requisition.id }}</td>
-                            <td>{{ requisition.item }}</td>
-                            <td>{{ requisition.requested_by }}</td>
+                            <td>{{ requisition.product }}</td>
+                            <!-- <td>{{ requisition.requested_by }}</td> -->
                             <td>{{ requisition.created_at }}</td>
                             <td>
                                 <form method="post" style="display:inline;" action="{% url 'pending_requisitions' %}">
@@ -63,5 +98,8 @@
             </table>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 # from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import Supplier, PurchaseOrder, Requisition, Invoice, GoodsReceivedNotice
+from .models import Supplier, PurchaseOrder, Requisition, Invoice, GoodsReceivedNotice, Product
 from django import forms
 
         
@@ -7,6 +7,18 @@ class SupplierForm(forms.ModelForm):
     class Meta:
         model = Supplier
         fields = '__all__'
+        
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+            'stock': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
 
 class PurchaseOrderForm(forms.ModelForm):
     class Meta:
@@ -46,8 +58,8 @@ class RequisitionForm(forms.ModelForm):
             'shipping_address': forms.TextInput(attrs={'class': 'form-control'}),
             'payment_method': forms.TextInput(attrs={'class': 'form-control'}),
             'billing_address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'order_deadline': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
-            'expected_arrival': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
+            # 'order_deadline': forms.DateTimeInput(attrs={'class': 'form-control'}),
+            # 'expected_arrival': forms.DateTimeInput(attrs={'class': 'form-control'}),
         }
 
 class InvoiceForm(forms.ModelForm):
@@ -61,8 +73,9 @@ class InvoiceForm(forms.ModelForm):
             'unit_price': forms.NumberInput(attrs={'class': 'form-control'}),
             'customer_tax': forms.NumberInput(attrs={'class': 'form-control'}),
             'subtotal': forms.NumberInput(attrs={'class': 'form-control'}),
-            'invoice_date': forms.TextInput(attrs={'class': 'form-control'}),
+            'invoice_date': forms.DateInput(attrs={'type': 'date'}),
             'urgency': forms.Select(attrs={'class': 'form-control'}),
+            'payment_due_date': forms.DateInput(attrs={'type': 'date'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
             'shipping_address': forms.TextInput(attrs={'class': 'form-control'}),
             'payment_method': forms.TextInput(attrs={'class': 'form-control'}),

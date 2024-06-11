@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-      .sidebar {
-        height: 100%;
-        width: 250px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #f8f9fa;
-        padding-top: 50px;
-      }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40; /* Dark background color */
+            padding-top: 50px;
+            overflow-y: auto; /* Allow scrolling if content is too tall */
+        }
+        .sidebar .nav-link {
+            color: #f8f9fa; /* Light color for links */
+        }
+        .sidebar .nav-link:hover {
+            background-color: #495057; /* Darker background on hover */
+            color: #ffc107; /* Highlight link color */
+        }
+        .sidebar h2 {
+            color: #ffc107; /* Highlight color for header */
+        }
+        .nav-item.active .nav-link {
+            background-color: #495057; /* Active link background */
+            color: #ffc107; /* Active link color */
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="sidebar">
-      <h2 class="text-center">Dashboard</h2>
-      <hr />
-      <ul class="nav flex-column">
-        {% if user.is_authenticated %}
-          {% if user.role == 'supplier' %}
+        <h2 class="text-center">Dashboard</h2>
+        <hr class="bg-light"/>
+        <ul class="nav flex-column">
+            {% if user.is_authenticated %}
+                {% if user.role == 'supplier' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'supplier_dashboard' %}">Profile</a>
+                    </li>
+                {% elif user.role == 'user' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Profile</a>
+                    </li>
+                {% elif user.role == 'admin' %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'pending_requisitions' %}">Profile</a>
+                    </li>
+                {% endif %}
+            {% endif %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'supplier_dashboard' %}">Profile</a>
+                <a class="nav-link" href="/invoices/">Invoices</a>
             </li>
-          {% elif user.role == 'user' %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'dashboard' %}">Profile</a>
+                <a class="nav-link" href="/requisitions/">Requisitions</a>
             </li>
-          {% elif user.role == 'admin' %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'pending_requisitions' %}">Profile</a>
+                <a class="nav-link" href="/purchase_orders/">Purchase Orders</a>
             </li>
-          {% endif %}                     
-        {% endif %}       
-        <li class="nav-item">
-          <a class="nav-link" href="/invoices/">Invoices</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/requisitions/">Requisitions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/purchase_orders/">Purchase Orders</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/suppliers/">Suppliers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/grn_list/">GRN</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout/">Logout</a>
-        </li>
-      </ul>
+            <li class="nav-item">
+                <a class="nav-link" href="/suppliers/">Suppliers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/grn_list/">GRN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout/">Logout</a>
+            </li>
+        </ul>
     </div>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>

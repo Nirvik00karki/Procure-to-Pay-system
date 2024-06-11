@@ -3,39 +3,52 @@
 {% block title %}Purchase Order List{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="navbar">{% include 'navbar.html' %}</div>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col">
-            <h1>Purchase Order List</h1>
-            <form method="GET">
+    <div>{% include 'navbar.html' %}</div>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="mb-0">Purchase Order List</h1>
+            <form method="get" action="{% url 'purchase_order_list' %}" class="form-inline">
                 <div class="form-group">
-                    <label for="search_criteria">Search by:</label>
-                    <select name="search_criteria" class="form-control" id="search_criteria">
-                        <option value="item_name" name="item_name">Item Name</option>
-                        <option value="supplier_name" name="supplier_name">Supplier Name</option>
+                    <label for="search_criteria" class="mr-2">Search by:</label>
+                    <select name="search_criteria" class="form-control mr-2" id="search_criteria">
+                        <option value="item_name">Item Name</option>
+                        <option value="supplier_name">Supplier Name</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="search_keyword">Keyword:</label>
+                <div class="form-group mr-2">
+                    <label for="search_keyword" class="mr-2">Keyword:</label>
                     <input type="text" name="search_keyword" class="form-control" id="search_keyword">
                 </div>
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
-            <ul class="list-group">
-                {% for purchase_order in purchase_orders %}
-                    <li class="list-group-item">
-                        <a href="{% url 'purchase_order_detail' purchase_order.pk %}" class="text-dark">PO#{{ purchase_order.id }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <a href="{% url 'add_purchase_order' %}" class="btn btn-primary mt-3">Add Purchase Order</a>
-            <a href="{% url 'purchase_order_summary' %}" class="btn btn-primary mt-3">Summary</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Supplier Name</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">Sub Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for purchase_order in purchase_orders %}
+                        <tr>
+                            <td><a href="{% url 'purchase_order_detail' purchase_order.pk %}" class="text-dark">{{ purchase_order.id }}</a></td>
+                            <td>{{ purchase_order.product }}</td>
+                            <td>{{ purchase_order.supplier }}</td>
+                            <td>{{ purchase_order.created_at }}</td>
+                            <td>{{ purchase_order.subtotal }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{% url 'add_purchase_order' %}" class="btn btn-success">Add Purchase Order</a>
+            <a href="{% url 'purchase_order_summary' %}" class="btn btn-info">Summary</a>
         </div>
     </div>
-</div>
 {% endblock %}

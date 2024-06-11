@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div>{% include 'navbar.html' %}</div>
+<div class="container mt-4">
+    <h1 class="text-center mb-4" style="color: #007bff; text-transform: uppercase; letter-spacing: 1.5px;">Products</h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100" style="border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body d-flex flex-column" style="padding: 20px;">
+                    <h5 class="card-title text-center" style="color: #007bff; margin-bottom: 15px;"><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h5>
+                    <p class="card-text text-center text-muted" style="font-size: 1.2em;">${{ product.price }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center">
+        <a href="{% url 'add_product' %}" class="btn btn-primary mt-3" style="border-radius: 5px; padding: 10px 20px;">Add Product</a>
+    </div>
+</div>
+{% endblock %}

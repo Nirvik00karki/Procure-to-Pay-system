@@ -1,6 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supplier Detail</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -8,14 +11,29 @@
     <div>{% include 'navbar.html' %}</div>
     
     <div class="container mt-4">
-        <h1>Supplier Detail</h1>
+        <h1 class="mb-4" style="color: #333; font-size: 36px; font-family: 'Helvetica Neue', sans-serif; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Supplier Detail</h1>
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ supplier.name }}</h3>
+            </div>
             <div class="card-body">
-                <p class="card-text"><strong>Name:</strong> {{ supplier.name }}</p>
-                <p class="card-text"><strong>Contact Person:</strong> {{ supplier.contact_person }}</p>
-                <p class="card-text"><strong>Email:</strong> {{ supplier.email }}</p>
-                <p class="card-text"><strong>Address:</strong> {{ supplier.address }}</p>
-                <div class="btn-group" role="group" aria-label="Supplier Actions">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Contact Person</th>
+                            <td>{{ supplier.contact_person }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td>{{ supplier.email }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Address</th>
+                            <td>{{ supplier.address }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group mt-4" role="group" aria-label="Supplier Actions">
                     <a href="{% url 'edit_supplier' supplier.pk %}" class="btn btn-primary">Edit</a>
                     <a href="{% url 'delete_supplier' supplier.pk %}" class="btn btn-danger">Delete</a>
                     <a href="{% url 'supplier_list' %}" class="btn btn-secondary">Back</a>

@@ -4,13 +4,14 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import permission_required
 # from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib import messages
+from django.http import JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponse
 from reportlab.lib.pagesizes import letter
 from .models import Supplier, PurchaseOrder, Requisition, Invoice, CustomUser, GoodsReceivedNotice, Product
 from payment.models import Payment
 from payment.forms import PaymentForm
-from .forms import SupplierForm, PurchaseOrderForm, RequisitionForm, InvoiceForm, SupplierSearchForm, GoodsReceivedNoticeForm
+from .forms import SupplierForm, PurchaseOrderForm, RequisitionForm, InvoiceForm, SupplierSearchForm, GoodsReceivedNoticeForm, ProductForm
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from django.db.models import Sum, Count, Avg
@@ -82,10 +83,45 @@ def req_creation_view(request):
     return render(request, 'requisition/requform.html')
 def product_list(request):
     products = Product.objects.all()
-    return render(request, 'requisition/product_list.html', {'products': products})
+    return render(request, 'product/product_list.html', {'products': products})
 
-# def admin_dashboard_view(request):
-#     return render(request, 'admin_dashboard.html')
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list') 
+    else:
+        form = ProductForm()
+    return render(request, 'product/add_product.html', {'form': form})
+
+def get_product_price(request):
+    product_id = request.GET.get('product_id')
+    product = get_object_or_404(Product, id=product_id)
+    return JsonResponse({'price': product.price})
+
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'product/product_detail.html', {'product': product})
+
+def delete_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product_list')
+    return render(request, 'product/delete_product.html', {'product': product})
+
+def edit_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request == 'post':
+        form = ProductForm(request.post, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_detail', pk=pk)
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'product/edit_product.html', {'form': form})
+
 
 def is_admin(user):
     return user.groups.filter(name='Admin').exists()
@@ -172,7 +208,7 @@ def purchase_order_list(request):
         search_keyword = request.GET.get('search_keyword')
         if search_criteria and search_keyword:
             if search_criteria == 'item_name':
-                purchase_orders = purchase_orders.filter(item__icontains=search_keyword)
+                purchase_orders = purchase_orders.filter(product__icontains=search_keyword)
             elif search_criteria == 'supplier_name':
                 purchase_orders = purchase_orders.filter(supplier__name__icontains=search_keyword)
 
@@ -215,6 +251,23 @@ def delete_purchase_order(request, pk):
         purchase_order.delete()
         return redirect('purchase_order_list')
     return render(request, 'purchase/delete_purchase_order.html', {'purchase_order': purchase_order})
+
+def get_purchase_order_details(request):
+    purchase_order_id = request.GET.get('purchase_order_id')
+    if purchase_order_id:
+        try:
+            purchase_order = PurchaseOrder.objects.get(id=purchase_order_id)
+            data = {
+                'product': purchase_order.product.id if purchase_order.product else None,  # Return product ID
+                'quantity': purchase_order.quantity,
+                'unit_price': purchase_order.unit_price,
+                'customer_tax': purchase_order.customer_tax,
+                'subtotal': purchase_order.subtotal,
+            }
+            return JsonResponse(data)
+        except PurchaseOrder.DoesNotExist:
+            return JsonResponse({'error': 'Purchase order not found'}, status=404)
+    return JsonResponse({'error': 'Invalid request'}, status=400)
 
 #Requisition
 # @login_required
@@ -282,7 +335,7 @@ def invoice_list(request):
     search_keyword = request.GET.get('search_keyword')
     if search_criteria and search_keyword:
         if search_criteria == 'item_name':
-            invoices = invoices.filter(item__icontains=search_keyword)
+            invoices = invoices.filter(product__icontains=search_keyword)
 
     return render(request, 'invoice/invoice_list.html', {'invoices': invoices})
 
@@ -331,7 +384,7 @@ def invoice_detail(request, pk, render_payment_page=False):
 # @login_required
 # @user_passes_test(lambda u: u.groups.filter(name='Supplier').exists())
 def add_invoice(request):
-    if not request.user.groups.filter(name='Supplier').exists():
+    if not request.user.groups.filter(name='Admin').exists():
         raise PermissionDenied
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -348,7 +401,7 @@ def add_invoice(request):
 # @login_required
 # @user_passes_test(lambda u: u.groups.filter(name='Supplier').exists())
 def edit_invoice(request, pk):
-    if not request.user.groups.filter(name='Supplier').exists():
+    if not request.user.groups.filter(name='Admin').exists():
         raise PermissionDenied
     invoice = get_object_or_404(Invoice, pk=pk)
     if request.method == 'POST':
@@ -454,8 +507,11 @@ def generate_purchase_pdf(request, purchase_order_id):
     purchase_data = [
         ["Purcchase Order ID", purchase_order.id],
         ["Supplier", purchase_order.supplier.name],
+        ["Product", purchase_order.product],
+        ["Unit Price", purchase_order.unit_price],
+        ["Quantity", purchase_order.quantity],
+        ["Sub-Total", purchase_order.subtotal],
         ["Payment Term", purchase_order.payment_terms],
-        ["Item of Purchase", purchase_order.item],
         ["Issued Date", purchase_order.created_at],
         ["Shipping Address", purchase_order.shipping_address],
         ["Payment Method", purchase_order.payment_method],
@@ -501,6 +557,36 @@ def grn_detail(request, grn_id):
     grn = get_object_or_404(GoodsReceivedNotice, pk=grn_id)
     return render(request, 'grn/grn_detail.html', {'grn': grn})
 
+def requisition_summary(request):
+    date_from = request.GET.get('date_from')
+    date_to = request.GET.get('date_to')
+    query = Requisition.objects.all()
+    
+    if date_from and date_to:
+        query = query.filter(created_at__range=[date_from, date_to])
+    
+    summary = query.aggregate(
+        total_subtotal=Sum('subtotal'),
+        total_quantity=Sum('quantity'),
+        total_count=Count('id'),
+        average_subtotal=Avg('subtotal')
+    )
+    
+    status_summary = query.values('status').annotate(count=Count('status')).order_by('status')
+    monthly_data = query.annotate(month=TruncMonth('created_at')).values('month').annotate(
+        total_subtotal=Sum('subtotal'), 
+        total_quantity=Sum('quantity'),
+        total_count=Count('id')
+    ).order_by('month')
+    
+    return render(request, 'reports/requisition_summary.html', {
+        'summary': summary,
+        'status_summary': status_summary,
+        'monthly_data': monthly_data,
+        'date_from': date_from,
+        'date_to': date_to
+    })
+
 def purchase_order_summary(request):
     date_from = request.GET.get('date_from')
     date_to = request.GET.get('date_to')
@@ -510,13 +596,18 @@ def purchase_order_summary(request):
         query = query.filter(created_at__range=[date_from, date_to])
     
     summary = query.aggregate(
-        total_amount=Sum('amount'),
+        total_subtotal=Sum('subtotal'),
+        total_quantity=Sum('quantity'),
         total_count=Count('id'),
-        average_amount=Avg('amount')
+        average_subtotal=Avg('subtotal')
     )
     
     status_summary = query.values('status').annotate(count=Count('status')).order_by('status')
-    monthly_data = query.annotate(month=TruncMonth('created_at')).values('month').annotate(total_amount=Sum('amount'), total_count=Count('id')).order_by('month')
+    monthly_data = query.annotate(month=TruncMonth('created_at')).values('month').annotate(
+        total_subtotal=Sum('subtotal'), 
+        total_quantity=Sum('quantity'),
+        total_count=Count('id')
+    ).order_by('month')
     
     return render(request, 'reports/purchase_order_summary.html', {
         'summary': summary,
@@ -535,38 +626,20 @@ def invoice_summary(request):
         query = query.filter(created_at__range=[date_from, date_to])
     
     summary = query.aggregate(
-        total_amount=Sum('amount'),
+        total_subtotal=Sum('subtotal'),
+        total_quantity=Sum('quantity'),
         total_count=Count('id'),
-        average_amount=Avg('amount')
+        average_subtotal=Avg('subtotal')
     )
     
     status_summary = query.values('status').annotate(count=Count('status')).order_by('status')
-    monthly_data = query.annotate(month=TruncMonth('created_at')).values('month').annotate(total_amount=Sum('amount'), total_count=Count('id')).order_by('month')
+    monthly_data = query.annotate(month=TruncMonth('created_at')).values('month').annotate(
+        total_subtotal=Sum('subtotal'), 
+        total_quantity=Sum('quantity'),
+        total_count=Count('id')
+    ).order_by('month')
     
     return render(request, 'reports/invoice_summary.html', {
-        'summary': summary,
-        'status_summary': status_summary,
-        'monthly_data': monthly_data,
-        'date_from': date_from,
-        'date_to': date_to
-    })
-
-def requisition_summary(request):
-    date_from = request.GET.get('date_from')
-    date_to = request.GET.get('date_to')
-    query = Requisition.objects.all()
-    
-    if date_from and date_to:
-        query = query.filter(created_at__range=[date_from, date_to])
-    
-    summary = query.aggregate(
-        total_count=Count('id')
-    )
-    
-    status_summary = query.values('status').annotate(count=Count('status')).order_by('status')
-    monthly_data = query.annotate(month=TruncMonth('created_at')).values('month').annotate(total_count=Count('id')).order_by('month')
-    
-    return render(request, 'reports/requisition_summary.html', {
         'summary': summary,
         'status_summary': status_summary,
         'monthly_data': monthly_data,

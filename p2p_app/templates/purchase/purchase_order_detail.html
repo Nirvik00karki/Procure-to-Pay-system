@@ -11,21 +11,46 @@
     <div>{% include 'navbar.html' %}</div>
     
     <div class="container mt-4">
-        <h1>Purchase Order Detail</h1>
+        <h1 class="mb-4" style="color: #333; font-size: 36px; font-family: 'Helvetica Neue', sans-serif; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Purchase Order Detail</h1>
         <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Purchase Order for {{ purchase_order.product }}</h3>
+                <p class="card-text"><small class="text-muted">Supplier: {{ purchase_order.supplier.name }}</small></p>
+            </div>
             <div class="card-body">
-                <p class="card-text"><strong>Supplier:</strong> {{ purchase_order.supplier.name }}</p>
-                <p class="card-text"><strong>Product:</strong> {{ purchase_order.product }}</p>
-                <p class="card-text"><strong>Quantity:</strong> {{ purchase_order.quantity }}</p>
-                <p class="card-text"><strong>Unit Price:</strong> {{ purchase_order.unit_price }}</p>
-                <p class="card-text"><strong>Status:</strong> {{ purchase_order.status }}</p>
-                <p class="card-text"><strong>Sub-Total:</strong> {{ purchase_order.subtotal }}</p>
-                <p class="card-text"><strong>Shipping Address:</strong> {{ purchase_order.shipping_address }}</p>
-                <p class="card-text"><strong>Payment Terms:</strong> {{ purchase_order.payment_terms }}</p>
-                <p class="card-text"><strong>Payment Method:</strong> {{ purchase_order.payment_method }}</p>
-                <p class="card-text"><strong>Payment Due Date:</strong> {{ purchase_order.payment_due_date }}</p>
-                <p class="card-text"><strong>Billing Address:</strong> {{ purchase_order.billing_address }}</p>
-                <div class="btn-group" role="group" aria-label="Purchase Order Actions">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Quantity</th>
+                            <td>{{ purchase_order.quantity }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Unit Price</th>
+                            <td>${{ purchase_order.unit_price }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td>{{ purchase_order.status }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Sub-Total</th>
+                            <td>${{ purchase_order.subtotal }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Shipping Address</th>
+                            <td>{{ purchase_order.shipping_address }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Payment Terms</th>
+                            <td>{{ purchase_order.payment_terms }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Billing Address</th>
+                            <td>{{ purchase_order.billing_address }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group mt-4" role="group" aria-label="Purchase Order Actions">
                     <a href="{% url 'edit_purchase_order' purchase_order.pk %}" class="btn btn-primary">Edit</a>
                     <a href="{% url 'delete_purchase_order' purchase_order.pk %}" class="btn btn-danger">Delete</a>
                     {% if user.is_authenticated %}
@@ -38,7 +63,7 @@
                         {% endif %}
                     {% endif %}
                     <a href="{% url 'create_grn' purchase_order_id=purchase_order.id %}" class="btn btn-primary">Create GRN</a>
-                    <a href="{% url 'generate_purchase_pdf' purchase_order_id=purchase_order.id %}" class="btn btn-danger">Generate PDF</a>
+                    <a href="{% url 'generate_purchase_pdf' purchase_order_id=purchase_order.id %}" class="btn btn-success">Generate PDF</a>
                 </div>
             </div>
         </div>

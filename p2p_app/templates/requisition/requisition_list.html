@@ -5,21 +5,40 @@
 {% block content %}
     <div>{% include 'navbar.html' %}</div>
     <div class="container mt-4">
-        <h1>Requisition List</h1>
-        <form method="get" action="{% url 'requisition_list' %}" class="form-inline justify-content-end">
-            <div class="form-group">
-                <input type="date" name="search_date" class="form-control mr-2">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </form>
-        <ul class="list-group">
-            {% for requisition in requisitions %}
-                <li class="list-group-item">
-                    <a href="{% url 'requisition_detail' requisition.pk %}" class="text-dark">Requisition#{{ requisition.id }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'add_requisition' %}" class="btn btn-primary mt-3">Add Requisition</a>
-        <a href="{% url 'requisition_summary' %}" class="btn btn-primary mt-3">Summary</a>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="mb-0">Requisition List</h1>
+            <form method="get" action="{% url 'requisition_list' %}" class="form-inline">
+                <div class="form-group">
+                    <input type="date" name="search_date" class="form-control mr-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for requisition in requisitions %}
+                        <tr>
+                            <td><a href="{% url 'requisition_detail' requisition.pk %}" class="text-dark">{{ requisition.id }}</a></td>
+                            <td>{{ requisition.product }}</td>
+                            <td>{{ requisition.quantity }}</td>
+                            <td>{{ requisition.subtotal }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{% url 'add_requisition' %}" class="btn btn-success">Add Requisition</a>
+            <a href="{% url 'requisition_summary' %}" class="btn btn-info">Summary</a>
+        </div>
     </div>
 {% endblock %}
